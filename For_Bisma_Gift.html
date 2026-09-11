@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bisma 💙</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden;
+  font-family: "Segoe UI", sans-serif;
+  background:linear-gradient(160deg,#bde9ff,#eaf8ff 55%,#ccefff);
+  color:#28506b;
+}
+.screen{
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:25px; position:relative;
+}
+.cloud{position:absolute;background:rgba(255,255,255,.7);border-radius:100px;filter:blur(.2px)}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.c1{width:150px;height:45px;top:10%;left:-25px}.c1:before{width:65px;height:65px;left:30px;top:-28px}.c1:after{width:55px;height:55px;left:80px;top:-20px}
+.c2{width:130px;height:40px;bottom:13%;right:-20px}.c2:before{width:55px;height:55px;left:25px;top:-25px}.c2:after{width:45px;height:45px;left:72px;top:-18px}
+.card{
+  width:min(430px,100%); text-align:center; padding:38px 27px;
+  background:rgba(255,255,255,.68); border:1px solid rgba(255,255,255,.85);
+  border-radius:30px; box-shadow:0 18px 50px rgba(66,145,181,.2);
+  backdrop-filter:blur(10px); z-index:2;
+}
+.small{font-size:14px;letter-spacing:2px;color:#5f99b5}
+h1{font-size:34px;margin:12px 0;color:#266384}
+p{line-height:1.8}
+button{
+  border:0; border-radius:999px; padding:14px 27px; margin-top:18px;
+  background:#6fc5ed;color:white;font-size:16px;font-weight:600;
+  box-shadow:0 8px 20px rgba(68,157,199,.25); cursor:pointer;
+  transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+.envelope{font-size:68px;animation:float 2.5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.hidden{display:none}
+.letter{
+  text-align:left; background:#fffdf8; padding:27px 23px; border-radius:18px;
+  box-shadow:0 10px 35px rgba(42,110,143,.14); position:relative;
+}
+.letter:before{content:"♡";position:absolute;right:18px;top:10px;color:#8ed5f2;font-size:28px}
+.letter h2{text-align:center;color:#397a9b;margin-top:0}
+.message{font-size:15.5px;color:#4c6572}
+.signature{text-align:right;font-style:italic;color:#397a9b;margin-top:20px}
+.final{font-size:20px;font-weight:600;color:#2f6e8f}
+.heart{position:fixed;bottom:-30px;font-size:20px;animation:rise 5s linear forwards;pointer-events:none;z-index:1}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+.fade{animation:fade .7s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="cloud c1"></div><div class="cloud c2"></div>
+
+<section id="home" class="screen">
+  <div class="card fade">
+    <div class="envelope">💌</div>
+    <div class="small">A LITTLE SOMETHING FOR</div>
+    <h1>Bisma 💙</h1>
+    <p>nggak ada hari spesial kok...<br>aku cuma pengen kasih sesuatu buat kamu ☁️</p>
+    <button onclick="openLetter()">Open it ♡</button>
+  </div>
+</section>
+
+<section id="letterScreen" class="screen hidden">
+  <div class="card fade">
+    <div class="letter">
+      <h2>For Bisma, with love 💙</h2>
+      <div class="message">
+        <p>Makasih ya, udah hadir di hidup aku. Aku seneng banget bisa kenal dan sedekat ini sama kamu. Aku nggak selalu pandai ngomong langsung, jadi aku tulis di sini 😄.</p>
+
+        <p>Kamu mungkin nggak sadar, tapi kehadiran kamu berarti buat aku 🤩. Aku harap kamu selalu inget kalau ada seseorang yang seneng banget punya kamu 🙇🏻‍♀️</p>
+
+        <p>Kalau ditanya hal kecil apa yang bikin aku bahagia akhir-akhir ini, salah satunya ya kamu 😫🤏🏻</p>
+
+        <p>Aku suka cara kamu jadi diri kamu sendiri, bahkan waktu kamu lagi ngeselin sekalipun 😆</p>
+
+        <p>Pokoknya, makasih udah jadi bagian dari cerita aku.</p>
+
+        <p>Semoga setelah baca ini kamu tahu kalau kamu berharga buat aku.</p>
+
+        <p class="final">I always loving you 🙆🏻‍♀️🤍</p>
+        <p class="signature">— someone who is very happy to have you ♡</p>
+      </div>
+    </div>
+    <button onclick="showFinal()">One more thing... 💭</button>
+  </div>
+</section>
+
+<section id="finalScreen" class="screen hidden">
+  <div class="card fade">
+    <div style="font-size:55px">☁️💙</div>
+    <div class="small">JUST REMEMBER THIS</div>
+    <h1 style="font-size:29px">You are special to me.</h1>
+    <p>And you don't need a special day<br>for me to remind you of that. ♡</p>
+    <p style="font-size:25px">I love having you in my life, Bisma. 🤍</p>
+    <button onclick="makeHearts()">♡ for you</button>
+  </div>
+</section>
+
+<script>
+function hearts(){
+  const symbols=["♡","🤍","💙","☁️"];
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*3)+"s";
+  h.style.fontSize=(15+Math.random()*14)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+setInterval(hearts,700);
+
+function openLetter(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("letterScreen").classList.remove("hidden");
+}
+function showFinal(){
+  document.getElementById("letterScreen").classList.add("hidden");
+  document.getElementById("finalScreen").classList.remove("hidden");
+}
+function makeHearts(){
+  for(let i=0;i<18;i++) setTimeout(hearts,i*100);
+}
+</script>
+</body>
+</html>
